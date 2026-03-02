@@ -7,6 +7,7 @@ import com.example.farukhmakhmutkhodzhaev.repositori.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Component
@@ -38,6 +39,7 @@ public class PostMapper {
                 .content(dto.getContent())
                 .image(dto.getImage())
                 .user(user)
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 }

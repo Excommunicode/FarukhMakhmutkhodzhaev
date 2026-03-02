@@ -37,20 +37,11 @@ public class BiographyServiceImpl implements BiographyService {
     @Override
     @Transactional
     public BiographyDto update(BiographyDto biographyDto) {
-        Biography existing = biographyRepository.findById(biographyDto.getId())
-                .orElseThrow(() -> new NotFoundException("Biography not found: " + biographyDto.getId()));
-        existing.setFirstName(biographyDto.getFirstName());
-        existing.setLastName(biographyDto.getLastName());
-        if (biographyDto.getDateOfBirth() != null) {
-            existing.setDateOfBirth(Date.from(biographyDto.getDateOfBirth()
-                    .atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        }
-        if (biographyDto.getUserId() != null) {
-            User user = userRepository.findById(biographyDto.getUserId())
-                    .orElseThrow(() -> new NotFoundException("User not found: " + biographyDto.getUserId()));
-            existing.setUser(user);
-        }
-        return biographyMapper.toDto(biographyRepository.save(existing));
+
+
+        Biography entity = biographyMapper.toEntity(biographyDto);
+        return biographyMapper.toDto(biographyRepository.save(entity));
+
     }
 
     @Override

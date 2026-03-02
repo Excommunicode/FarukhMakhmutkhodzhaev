@@ -4,6 +4,8 @@ import com.example.farukhmakhmutkhodzhaev.dto.UserDto;
 import com.example.farukhmakhmutkhodzhaev.model.User;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class UserMapper {
 
@@ -21,6 +23,7 @@ public class UserMapper {
                 .id(dto.getId())
                 .username(dto.getUsername())
                 .password(dto.getPassword())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 }

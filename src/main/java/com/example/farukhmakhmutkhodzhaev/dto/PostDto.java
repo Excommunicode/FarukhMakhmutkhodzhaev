@@ -28,5 +28,7 @@ public class PostDto {
     @NotEmpty
     @NotNull
     private String image;
+
+    
     private UUID userId;
 }

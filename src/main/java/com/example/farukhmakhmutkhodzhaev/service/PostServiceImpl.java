@@ -28,7 +28,6 @@ public class PostServiceImpl implements PostService {
     @Transactional
     public PostDto create(PostDto postDto) {
         Post post = postMapper.toEntity(postDto);
-        post.setId(null);
         return postMapper.toDto(postRepository.save(post));
     }
 

@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDto create(UserDto userDto) {
         User user = userMapper.toEntity(userDto);
-        user.setId(null);
+
         return userMapper.toDto(userRepository.save(user));
     }
 
